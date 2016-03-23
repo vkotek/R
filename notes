@@ -1,0 +1,173 @@
+
+
+__________                                                           .__                
+\______   \  _____________  ____   ________________    _____   _____ |__| ____    ____  
+ |       _/  \____ \_  __ \/  _ \ / ___\_  __ \__  \  /     \ /     \|  |/    \  / ___\ 
+ |    |   \  |  |_> >  | \(  <_> ) /_/  >  | \// __ \|  Y Y  \  Y Y  \  |   |  \/ /_/  >
+ |____|_  /  |   __/|__|   \____/\___  /|__|  (____  /__|_|  /__|_|  /__|___|  /\___  / 
+        \/   |__|               /_____/            \/      \/      \/        \//_____/  
+
+
+#   Peter Stefko
+#   peter.stefko@cerge-ei.cz
+
+Operators
+<	less than
+>	great than
+<=	less than or equal
+>=	greater than or equal
+==	equal to
+!=	not equal to
+|	entry wise or
+||	or
+!	not
+&	entry wise and
+&&	and
+xor(a,b)	exclusive or
+
+
+a:b     Sequence
+
+
+
+________          __           ___________                            
+\______ \ _____ _/  |______    \__    ___/__.__.______   ____   ______
+ |    |  \\__  \\   __\__  \     |    | <   |  |\____ \_/ __ \ /  ___/
+ |    `   \/ __ \|  |  / __ \_   |    |  \___  ||  |_> >  ___/ \___ \ 
+/_______  (____  /__| (____  /   |____|  / ____||   __/ \___  >____  >
+        \/     \/          \/            \/     |__|        \/     \/ 
+
+
+Atomic classes:
+    - Character
+    - Numeric (real numbs)
+    - Integer
+    - Complex numbers
+    - Logicals T/F
+    
+Vector - can contain objects of the same class only [ vector() ]
+List - many classes in one
+
+Factors - Categorical data
+
+Data Frames - store tabular data
+
+Names
+    names(x)    # Give names to object
+    names(x) <- c('name1','name2')  # Regular naming a list or something
+    dimnames(x) <- list(c("col1","col2"),c("row1","row2"))  # Naming a matrix's dimensions
+
+Inf - infinity
+att
+nan     # Non assigned numeric
+na      # non assigned other
+
+
+Functions:
+c()         # Create an object
+typeof()
+as.*        # Convert object's class
+as.numeric
+as.logical
+as.character
+list()      # Make a list
+matrix(nrow = A, ncol = B)  # Make a matrix 
+matrix(list(row vals for col), rows)
+dim()       # 
+cbind()     # 
+rbind()     # 
+table()     # Frequency of items in an object/array 
+is.*()      # Test if something is *
+data.frame()   # 
+nrow(x), ncol(x)    # Number of rows/cols
+sapply(object, attribute)    # Loop through something and get atts (attributes, classes, etc)
+rm() ???
+
+__________                   .___.__                 ________          __          
+\______   \ ____ _____     __| _/|__| ____    ____   \______ \ _____ _/  |______   
+ |       _// __ \\__  \   / __ | |  |/    \  / ___\   |    |  \\__  \\   __\__  \  
+ |    |   \  ___/ / __ \_/ /_/ | |  |   |  \/ /_/  >  |    `   \/ __ \|  |  / __ \_
+ |____|_  /\___  >____  /\____ | |__|___|  /\___  /  /_______  (____  /__| (____  /
+        \/     \/     \/      \/         \//_____/           \/     \/          \/ 
+
+
+
+read.table, read.csv # Tabular data (space vs comma)
+readLines   # Read lines of a text file
+source  # Reading R code (inv of dump)
+dget # Reading r code (inv of dput)
+load # reading in saved workspaces
+unserialize # For reading single R objects in binary
+
+read.table      
+    [file]                  filename
+    [header]                logical indicationg first line is/nt header
+    [sep]                   separator (str)
+    [colClasses]            char vect. indicating class of each col
+    [nrows]                 # of rows
+    [comment.char]          comment char (str)
+    [skip]                  # of lines to skip at start
+    [stringsAsFactors]      Code char vars as factors?
+    
+Writing Data:
+
+Textual Formats
+
+dump, dput # preserve metadata
+
+e.g.
+dput(object, file = "x.R")
+dget(object)
+
+dump("object", file = "x.R")
+source("file")
+
+External data:
+
+    file
+    gzfile
+    bzfile
+    url("url", "r")
+        header()
+        
+SUBSETTING
+LISTS:
+x$foo   # foo must be literal, not var
+
+x[1]
+x[1:2]
+x[x > "a"]
+
+Single vs Double bracket operator [[]] vs []
+> x <- list(bar = 1)
+> x
+$bar
+[1] 1
+
+> x[1]
+$bar
+[1] 1
+
+> x[[1]]
+[1] 1
+
+> x[bar]
+$bar
+[1] 1
+
+MATRICES:
+
+Dimensions can be preserved with x[a,b, drop = FALSE]
+
+> x
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+> x[2,2]
+[1] 4
+> x[1:2,1:2]
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+> x[ , 3]
+[1] 5 6
